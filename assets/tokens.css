@@ -1,0 +1,88 @@
+/* mini · La lettre de bébé — tokens v2
+   Ratios de contraste en commentaire, contre les fonds indiqués.
+   Règle : texte courant et petit texte ≥ 7:1, liens / surtitres / erreurs ≥ 4,5:1,
+   contours porteurs de sens ≥ 3:1. */
+@import url("fonts.css");
+
+:root {
+  /* ---------- Fonds ---------- */
+  --lait: #FBF6EE;            /* page */
+  --carte: #FFFFFF;           /* cartes, formulaire, lettre */
+  --sable: #F3E9DB;           /* bandes, fond d’email */
+
+  /* ---------- Texte ---------- */
+  --encre: #1F3442;           /* texte courant, bouton — 12,9 blanc · 12,0 lait · 10,7 sable / argile clair */
+  --encre-hover: #142430;
+  --encre-douce: #34444F;     /* petit texte — 10,1 blanc · 9,4 lait · 8,4 sable (avant #4C5E69, 5,6 à 6,7) */
+  --lien: #963F0F;            /* liens, surtitres — 7,0 blanc · 6,5 lait · 5,8 sable (avant #B04E12, 4,4 sur sable) */
+  --lien-hover: #6F2E0B;
+  --erreur: #A51C12;          /* 7,6 blanc · 7,0 sur --erreur-fond */
+  --erreur-fond: #FFF4F1;
+  --succes: #2A5E41;          /* coches, validation — 7,6 blanc */
+
+  /* ---------- Contours (≥ 3:1) ---------- */
+  --trait: #8A7864;           /* cartes, lettre, filets FAQ — 4,2 blanc · 3,9 lait · 3,5 sable */
+  --champ-bord: #7A6855;      /* champs, listes, case, sélecteur — 5,3 blanc · 5,0 lait */
+  --ombre-pleine: #E3D3BC;    /* ombre décalée sous les cartes principales */
+
+  /* ---------- Encarts : fond clair + bord moyen ---------- */
+  --beurre: #F7D98A;  --beurre-clair: #FCF0CF;  --beurre-bord: #A27B1F;   /* bord 3,9 blanc */
+  --ciel: #BCD7E6;    --ciel-clair: #E3EEF4;    --ciel-bord: #4F82A3;     /* bord 4,2 blanc */
+  --tilleul: #A9C8A0; --tilleul-clair: #E6F0E1; --tilleul-bord: #5E8C66;  /* bord 3,9 blanc */
+  --argile: #E9B9A3;  --argile-clair: #FBE6DC;  --argile-bord: #B5674C;   /* bord 4,2 blanc */
+
+  /* ---------- Décor (jamais pour du texte) ---------- */
+  --mandarine: #F2894A;       /* le chat, filet sous les rubriques de l’email */
+
+  /* ---------- Illustration ---------- */
+  --terracotta: #A2553B;
+  --tilleul-fonce: #4E7D57;
+  --ciel-fonce: #4F7FA0;
+  --scene-nuit: #1F3A52;      /* canapé enfant 1 */
+  --scene-sapin: #21443A;     /* canapé enfant 2 */
+  --scene-lin: #F5E6C4;       /* canapé enfant 3 */
+  --scene-brume: #DCEAF2;     /* canapé enfant 4 */
+
+  /* ---------- Focus ---------- */
+  --focus: #2F62D6;           /* 4,6 à 5,5 sur tous les fonds clairs */
+
+  /* ---------- Typo ---------- */
+  --f-titre: "Young Serif", Georgia, serif;
+  --f-texte: "Nunito", "Trebuchet MS", system-ui, sans-serif;
+  --t-h1: clamp(1.94rem, 1.4rem + 2.6cqi, 3.625rem);
+  --t-h2: clamp(1.69rem, 1.25rem + 1.6cqi, 2.5rem);
+  --t-titre-lettre: clamp(1.875rem, 1.375rem + 2cqi, 2.5rem);
+  --t-rubrique: clamp(1.44rem, 1.19rem + 1cqi, 1.69rem);
+  --t-h3: 1.44rem;
+  --t-texte: 1.0625rem;       /* 17 px site, 18 px dans la lettre */
+  --t-lettre: 1.125rem;
+  --t-libelle: 1rem;          /* 800 */
+  --t-petit: 0.9375rem;       /* 15 px, jamais moins de 14 px */
+  --t-surtitre: 0.875rem;     /* 800, capitales, +0.06em */
+
+  /* ---------- Espaces, rayons ---------- */
+  --e-1: .25rem; --e-2: .5rem; --e-3: .75rem; --e-4: 1rem; --e-5: 1.25rem; --e-6: 1.5rem;
+  --e-8: 2rem; --e-10: 2.5rem; --e-18: 4.5rem;
+  --gouttiere: clamp(16px, 4cqi, 48px);
+  --r-champ: 12px; --r-case: 14px; --r-bouton: 16px; --r-encart: 18px; --r-carte: 24px; --r-pastille: 999px;
+  --cible-min: 44px;
+}
+
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* Email, mode sombre (Apple Mail, Outlook Mac/iOS ; [data-ogsc] pour Outlook.com) */
+:root {
+  --sombre-fond: #14212A; --sombre-carte: #1C2C37; --sombre-entete: #18262F;
+  --sombre-texte: #F4EDE3;   /* 14,1 fond · 12,3 carte */
+  --sombre-douce: #D9D2C7;   /* 10,9 fond · 9,6 carte */
+  --sombre-lien: #F6B48A;    /* 9,2 fond · 8,1 carte ; aussi fond du bouton, texte #14212A */
+  --sombre-bord: #7F95A5;    /* 5,3 fond */
+  --sombre-tilleul: #22362B; --sombre-tilleul-bord: #6F9C78;
+  --sombre-beurre: #3A3220;  --sombre-beurre-bord: #C9A54A;
+  --sombre-ciel: #1E3242;    --sombre-ciel-bord: #6D9CC0;
+  --sombre-argile: #3B2620;  --sombre-argile-bord: #CF8A70;
+}
